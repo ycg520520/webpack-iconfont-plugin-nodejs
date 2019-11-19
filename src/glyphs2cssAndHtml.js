@@ -20,10 +20,12 @@ module.exports = function (fileMark, glyphDatas, options) {
         // html模板中css文件的相对文件名
         options.htmlCssFile = path.relative(path.dirname(options.htmlOutput), options.cssOutput);
     }
-    // css模板中的字体文件的相对路径
-    options.cssFontPath = path.relative(path.dirname(options.cssOutput), options.fontsOutput);
-    if (options.cssFontPath !== '') {
-        options.cssFontPath += '/'
+    if (!options.cssFontPath) {
+        // css模板中的字体文件的相对路径
+        options.cssFontPath = path.relative(path.dirname(options.cssOutput), options.fontsOutput);
+        if (options.cssFontPath !== '') {
+            options.cssFontPath += '/'
+        }
     }
 
     options.fileMark = fileMark;
